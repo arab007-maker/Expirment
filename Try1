@@ -1,3 +1,36 @@
+git clone https://github.com/arab007-maker/arab007-maker.github.io
+cd arab007-maker.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+    <h1>Welcome to My Website</h1>
+    <p>This is my new website hosted on GitHub Pages!</p>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+}
+
+h1 {
+    color: #009a9d; /* Kuwaiti national color */
+}
+git add index.html styles.css
+git commit -m "Initial commit with index.html and styles.css"
+git push origin main
+<meta name="description" content="Testing">
+<meta name="keywords" content="test1, Test2, Test3">
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
 # Create main project directory
 mkdir kuwait-national-repository
 cd kuwait-national-repository
@@ -61,6 +94,7 @@ const userSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('User', userSchema);
+
 
 const express = require('express');
 const bcrypt = require('bcryptjs');
@@ -206,6 +240,7 @@ function App() {
 }
 
 export default App;
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f1f1f1;
@@ -225,9 +260,11 @@ h2 {
 button {
   background-color: #006f6f;
 }
+
 node server.js
-Style and AI
+
 npm install react-icons axios react-router-dom
+......
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Form, Container, Row, Col, Card } from 'react-bootstrap';
@@ -294,7 +331,6 @@ function App() {
           </Card>
         </Col>
       </Row>
-
       {/* Featured Sections */}
       <section className="mt-5">
         <h2 className="text-center mb-4">Explore Key Initiatives</h2>
@@ -334,7 +370,6 @@ function App() {
 }
 
 export default App;
-.......
 /* General Body Styles */
 body {
   font-family: 'Arial', sans-serif;
@@ -416,7 +451,7 @@ body {
 .form-control {
   border-radius: 10px;
 }
-......
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 1.8rem;
@@ -468,7 +503,148 @@ const Chatbot = () => {
           </div>
           <Form.Control
             as="textarea"
-            rows={3
+              rows={3
+
+if (!employmentFile) {
+  return res.status(400).json({ message: 'Please upload your employment verification document.' });
+}
+
+// Create a new user
+const salt = await bcrypt.genSalt(10);
+const hashedPassword = await bcrypt.hash(password, salt);
+
+const newUser = new User({
+  name,
+  email,
+  position,
+  affiliation,
+  employment_id,
+  employment_email,
+  role,
+  password: hashedPassword,
+  verified: false, // Initially, set as unverified
+});
+
+await newUser.save();
+res.status(200).json({ message: 'Registration successful. Awaiting verification.' });
+const isMatch = await bcrypt.compare(password, user.password);
+if (!isMatch) {
+  return res.status(400).json({ message: 'Invalid credentials' });
+}
+
+const payload = { id: user.id, role: user.role };
+const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+res.json({ token });
+    <Form.Group controlId="formPassword">
+      <Form.Label>Password</Form.Label>
+      <Form.Control
+        type="password"
+        placeholder="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+    </Form.Group>
+
+    <Button variant="primary" type="submit">
+      Login
+    </Button>
+  </Form>
+</Container>
+  {/* Login Section */}
+  <Row className="mt-4">
+    <Col md={6} className="mx-auto">
+      <Card className="shadow-sm">
+        <Card.Body>
+          <h3 className="text-center mb-4">Login</h3>
+          {message && <p className="text-danger text-center">{message}</p>}
+          <Form onSubmit={handleLogin}>
+            <Form.Group controlId="formEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
+
+            <Button variant="primary" type="submit" block>
+              <FaSignInAlt /> Login
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </Col>
+  </Row>
+
+  {/* Featured Sections */}
+  <section className="mt-5">
+    <h2 className="text-center mb-4">Explore Key Initiatives</h2>
+    <Row>
+      <Col md={4} className="mb-4">
+        <Card>
+          <Card.Body>
+            <FaFileUpload size={50} className="mb-3" />
+            <Card.Title>Create New Data</Card.Title>
+            <Card.Text>
+              Submit new projects, laws, or initiatives to the platform.
+            </Card.Text>
+            <Link to="/submit" className="btn btn-primary w-100">
+              Submit Now
+            </Link>
+          </Card.Body>
+        </Card>
+      </Col>
+      <Col md={4} className="mb-4">
+        <Card>
+          <Card.Body>
+            <FaUserAlt size={50} className="mb-3" />
+            <Card.Title>Research & Browse</Card.Title>
+            <Card.Text>
+              Browse through various initiatives and laws to get insights.
+            </Card.Text>
+            <Link to="/research" className="btn btn-primary w-100">
+              Browse Now
+            </Link>
+          </Card.Body>
+        </Card>
+      </Col>
+    </Row>
+  </section>
+</Container>
+  <Modal show={showModal} onHide={() => setShowModal(false)} size="lg">
+    <Modal.Header closeButton>
+      <Modal.Title>Chat with AI Assistant</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <div style={{ height: '300px', overflowY: 'scroll' }}>
+        {chatHistory.map((chat, index) => (
+          <div key={index} className={chat.sender === 'user' ? 'text-right' : 'text-left'}>
+            <p>{chat.message}</p>
+          </div>
+        ))}
+      </div>
+      <Form.Control
+        as="textarea"
+        rows={3 /project-folder
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+import 'bootstrap/dist/css/bootstrap.min.css';
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 /project-folder
   /backend (Back-End files)
   /client (React Front-End files)
@@ -518,10 +694,10 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
+ 
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_secret_key
-....
+
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
@@ -532,6 +708,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('User', UserSchema);
+
 const mongoose = require('mongoose');
 
 const CampaignSchema = new mongoose.Schema({
@@ -543,6 +720,7 @@ const CampaignSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Campaign', CampaignSchema);
+
 Register and login
 const express = require('express');
 const bcrypt = require('bcryptjs');
@@ -583,7 +761,7 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
-Creating projectss
+
 const express = require('express');
 const Campaign = require('../models/Campaign');
 const jwt = require('jsonwebtoken');
@@ -611,8 +789,11 @@ router.get('/', async (req, res) => {
 });
 
 module.exports = router;
+
 npx create-react-app .
+
 npm install axios react-bootstrap bootstrap react-router-dom
+
 /client
   /src
     /components
@@ -665,4 +846,4 @@ const CampaignList = () => {
 
   return (
     <div>
-      <h2>All Campaigns</h
+      <h2>All Campaigns</h>
